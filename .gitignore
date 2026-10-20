@@ -1,0 +1,23 @@
+# Dataset files are stored externally and must not be committed.
+/dataset/
+/PlantDiseases Dataset for Edge - AI Based Real - T/
+**/*.zip
+
+# Training outputs and model checkpoints.
+/runs/
+*.keras
+*.h5
+*.weights.h5
+
+# Python and Jupyter environment files.
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+env/
+.ipynb_checkpoints/
+
+# Editor and operating system files.
+.vscode/
+.DS_Store
+Thumbs.db
