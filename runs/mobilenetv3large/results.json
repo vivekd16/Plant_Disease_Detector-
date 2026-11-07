@@ -1,0 +1,12 @@
+{
+  "test_accuracy": 0.9393,
+  "test_macro_f1": 0.9278,
+  "n_train": 44284,
+  "n_val": 13115,
+  "n_test": 19218,
+  "params_millions": 3.04,
+  "model_size_mb": 26.0,
+  "max_per_class": 1000,
+  "epochs": 8,
+  "fine_tune_epochs": 8
+}

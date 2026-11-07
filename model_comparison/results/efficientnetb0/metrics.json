@@ -1,0 +1,6 @@
+{
+  "model": "EfficientNetB0",
+  "test_loss": 0.27171775698661804,
+  "test_accuracy": 0.9099802374839783,
+  "num_classes": 46
+}

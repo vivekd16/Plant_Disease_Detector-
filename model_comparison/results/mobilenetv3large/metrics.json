@@ -1,0 +1,6 @@
+{
+  "model": "MobileNetV3Large",
+  "test_loss": 0.24710887670516968,
+  "test_accuracy": 0.925330400466919,
+  "num_classes": 46
+}

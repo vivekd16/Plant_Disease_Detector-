@@ -1,45 +1,53 @@
-# Plant Disease Detection with MobileNetV2
+# Plant Disease Classification
 
-A TensorFlow/Keras image classifier that uses transfer learning with MobileNetV2 to classify plant leaf diseases.
+TensorFlow image classifiers for plant leaf diseases, with a local NVIDIA GPU workflow and notebooks for comparing MobileNetV2, MobileNetV3Large, and EfficientNetB0.
 
-## Run the notebook in Google Colab
+## Environment setup (Linux or WSL2)
 
-1. Open `plant_disease_mobilenetv2.ipynb` in Google Colab (File → Upload notebook, or open it from your GitHub repository).
-2. Select **Runtime → Change runtime type → GPU**. GPU availability depends on your Colab account and current capacity.
-3. In the notebook's data cell, make sure the Google Drive dataset file is shared as **Anyone with the link → Viewer**.
-4. Run the cells from top to bottom. The notebook downloads and extracts the dataset in the Colab runtime.
-5. The trained model and metadata are copied to `My Drive/plant_disease_runs/mobilenetv2` at the end.
+Use a Linux or WSL2 terminal with NVIDIA GPU access. From the repository root:
 
-Colab storage is temporary. The notebook downloads the ZIP again after a runtime reset. Free GPU access and runtime limits vary, so a run may need to be restarted.
+```bash
+python3 -m venv .venv
+source .venv/bin/activate
+python -m pip install --upgrade pip
+python -m pip install -r requirements.txt
+python -m ipykernel install --user --name plant-disease-gpu --display-name "Python (Plant Disease GPU)"
+jupyter lab
+```
 
-## Dataset layout
+Select the **Python (Plant Disease GPU)** kernel in Jupyter. Check that WSL can see the GPU by running `nvidia-smi`. The notebook setup cell also prints the TensorFlow version and its detected GPUs. If you edit that cell, keep the cuSOLVER preload before `import tensorflow as tf`; restart the kernel before rerunning it.
 
-The ZIP should contain these directories, possibly inside a parent folder:
+`requirements.txt` installs TensorFlow 2.21 with its CUDA dependencies and the notebook packages. Native Windows Python is not the GPU environment for this setup; run Jupyter from WSL.
+
+## Dataset
+
+Place the dataset in `dataset/` at the repository root, with one class folder inside each split:
 
 ```text
 dataset/
-├── train/
-│   ├── Apple___Apple_scab/
-│   └── ...
-├── val/
-│   ├── Apple___Apple_scab/
-│   └── ...
-└── test/
-    ├── Apple___Apple_scab/
-    └── ...
+├── train/<class_name>/
+├── val/<class_name>/
+└── test/<class_name>/
 ```
 
-The dataset is not included in this repository because it is large. The notebook contains the Drive file ID used to download it; update that value in the data cell if you use a different copy. The linked file must be accessible to Colab.
+The notebooks expect class folder names to match across all splits. The dataset is not included in the repository. The comparison notebooks can optionally download and extract the configured Google Drive archive if `DOWNLOAD_FROM_DRIVE_IF_MISSING` is enabled in their data setup cell. The local MobileNetV3Large notebook expects the local `dataset/` directory.
 
-## Training setup
+## Notebooks
 
-- MobileNetV2 ImageNet weights, with a new softmax classification head.
-- Two training stages: train the head with the backbone frozen, then fine-tune the top backbone layers at a lower learning rate.
-- To shorten training, each epoch uses up to 200 training images and 100 validation images per class. Change `MAX_TRAIN_PER_CLASS` and `MAX_VAL_PER_CLASS` in the data-loading cell to adjust these limits; set a limit to `0` to use the full split.
-- Final test evaluation uses the full test split.
+### MobileNetV3Large training
 
-The notebook saves `model.keras`, `class_names.json`, and `metrics.json`. Keep the class names file with the model so predicted class indices can be mapped to disease labels.
+Open [MobileNetV3Large.ipynb](MobileNetV3Large.ipynb) to train MobileNetV3Large using up to 1,000 training and 300 validation images per class per run. It evaluates the full test split and saves the model and evaluation artifacts under `runs/mobilenetv3large/`.
 
-## Dependencies
+### Architecture comparison
 
-Colab includes TensorFlow and common data science packages. For a local Jupyter environment, install the packages in `requirements.txt`. TensorFlow GPU training on Windows requires WSL2; native Windows TensorFlow 2.11 and later does not support NVIDIA GPU training.
+The notebooks in `model_comparison/` use the same local dataset and training limits of up to 200 training and 100 validation images per class:
+
+- [MobileNetV2](model_comparison/plant_disease_mobilenetv2.ipynb)
+- [MobileNetV3Large](model_comparison/plant_disease_mobilenetv3large.ipynb)
+- [EfficientNetB0](model_comparison/plant_disease_efficientnetb0.ipynb)
+
+Each saves its model, class names, metrics, and classification report under `model_comparison/results/<model_name>/`. The active MobileNetV3Large notebook uses more training data than these comparison notebooks, so their scores should not be compared as an architecture-only benchmark.
+
+## Saved files
+
+Model folders contain `model.keras` and `class_names.json`; evaluation files include metrics and per-class reports. Keep the class names file with its model because output indices map to the labels in that file. Training results and saved models can be regenerated by running the corresponding notebook from top to bottom.

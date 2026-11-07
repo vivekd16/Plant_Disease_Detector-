@@ -1,0 +1,52 @@
+                                               precision    recall  f1-score   support
+
+                           Apple___Apple_scab     0.9481    0.9425    0.9453       504
+                            Apple___Black_rot     0.9633    0.9497    0.9564       497
+                           Apple___Brown spot     0.9923    0.9822    0.9872       394
+                     Apple___Cedar_apple_rust     0.9733    0.8273    0.8943       440
+                            Apple___Grey spot     0.9303    1.0000    0.9639       187
+                               Apple___Mosaic     0.8503    0.9960    0.9174       251
+                              Apple___healthy     0.9878    0.9641    0.9758       502
+                          Blueberry___healthy     0.9889    0.9802    0.9845       454
+                      Cherry___Powdery_mildew     0.9976    0.9810    0.9892       421
+                             Cherry___healthy     0.9891    0.9956    0.9923       456
+   Corn___Cercospora_leaf_spot_Gray_leaf_spot     0.9280    0.8488    0.8866       410
+                           Corn___Common_rust     0.9694    0.9958    0.9824       477
+                  Corn___Northern_Leaf_Blight     0.8796    0.9497    0.9133       477
+                               Corn___healthy     0.9936    0.9957    0.9946       465
+                            Grape___Black_rot     0.9365    0.9682    0.9521       472
+                 Grape___Esca_(Black_Measles)     0.9638    0.9417    0.9526       480
+   Grape___Leaf_blight_(Isariopsis_Leaf_Spot)     0.9884    0.9907    0.9895       430
+                              Grape___healthy     1.0000    0.9314    0.9645       423
+     Orange___Haunglongbing_(Citrus_greening)     0.9901    0.9980    0.9941       503
+                       Peach___Bacterial_spot     0.9628    0.9586    0.9607       459
+                              Peach___healthy     0.9605    0.9560    0.9582       432
+                Pepper,_bell___Bacterial_spot     0.9249    0.9791    0.9512       478
+                       Pepper,_bell___healthy     0.9819    0.8732    0.9244       497
+                        Potato___Early_blight     0.9450    0.9918    0.9678       485
+                         Potato___Late_blight     0.9144    0.9691    0.9409       485
+                             Potato___healthy     0.9876    0.8728    0.9267       456
+                          Raspberry___healthy     0.9884    0.9551    0.9714       445
+                            Rice___Brown_Spot     0.4561    0.4727    0.4643        55
+                               Rice___Healthy     0.8346    0.9815    0.9021       108
+                            Rice___Leaf_Blast     0.8393    0.6104    0.7068        77
+                            Rice___Neck_Blast     0.9811    1.0000    0.9905        52
+                            Soybean___healthy     0.7580    0.9861    0.8571       505
+                      Squash___Powdery_mildew     0.9175    1.0000    0.9570       434
+                     Strawberry___Leaf_scorch     0.9713    0.9910    0.9810       444
+                         Strawberry___healthy     0.9694    0.9715    0.9704       456
+                      Tomato___Bacterial_spot     0.8953    0.9059    0.9006       425
+                        Tomato___Early_blight     0.8485    0.7000    0.7671       480
+                         Tomato___Late_blight     0.7869    0.8294    0.8076       463
+                           Tomato___Leaf_Mold     0.8307    0.9085    0.8679       470
+                  Tomato___Septoria_leaf_spot     0.7757    0.8647    0.8178       436
+Tomato___Spider_mites_Two-spotted_spider_mite     0.8258    0.7954    0.8103       435
+                         Tomato___Target_Spot     0.7455    0.7309    0.7381       457
+       Tomato___Tomato_Yellow_Leaf_Curl_Virus     0.9912    0.9245    0.9567       490
+                 Tomato___Tomato_mosaic_virus     0.9231    0.6696    0.7762       448
+                             Tomato___healthy     0.8669    0.9210    0.8931       481
+                     Wheat brown spot disease     1.0000    1.0000    1.0000       522
+
+                                     accuracy                         0.9253     19218
+                                    macro avg     0.9164    0.9143    0.9131     19218
+                                 weighted avg     0.9282    0.9253    0.9248     19218

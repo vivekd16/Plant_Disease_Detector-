@@ -1,12 +1,5 @@
 # Dataset files are stored externally and must not be committed.
 /dataset/
-/PlantDiseases Dataset for Edge - AI Based Real - T/
-**/*.zip
-
-# Training outputs and model checkpoints.
-/runs/
-*.h5
-*.weights.h5
 
 # Python and Jupyter environment files.
 __pycache__/
